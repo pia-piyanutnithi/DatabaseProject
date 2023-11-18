@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import pandas as pd
 
-import joblib as joblib
+import joblib
 from utils import preprocessor
 
 app = Flask(__name__)
@@ -14,14 +14,14 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 
-    input = request.form['text']
-    predicted_sentiment = model.predict(process_input)[0]
+    process_input = request.form['text']
+    predicted_sentiment = model.predict(pd.Series(process_input))[0]
     if predicted_sentiment == 1:
         output = 'positive'
     else:
         output = 'negative'
 
-    return render_template('result.html', sentiment=f'Predicted sentiment of "{input}" is {output}.')
+    return render_template('index.html', sentiment=f'Predicted sentiment of "{process_input}" is {output}.')
 
 
 if __name__ == "__main__":
