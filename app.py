@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify, render_template
 import pandas as pd
 
-import joblib
+import joblib as joblib
 from utils import preprocessor
 
 app = Flask(__name__)
-model = joblib.load('/Users/piyanutnithiworachai/Documents/Curtin/Material/Lab_10/IOD_Lab-10_2/model.joblib')
+model = joblib.load('model.joblib')
 
 @app.route('/')
 def home():
