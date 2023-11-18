@@ -21,7 +21,7 @@ def predict():
     else:
         output = 'negative'
 
-    return render_template('index.html', sentiment=f'Predicted sentiment of "{input}" is {output}.')
+    return render_template('result.html', sentiment=f'Predicted sentiment of "{input}" is {output}.')
 
 
 if __name__ == "__main__":
